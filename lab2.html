@@ -1,2 +1,289 @@
-h
-.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML Form Lab 2</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 28px; }
+    h2 { margin: 30px 0 10px; }
+    hr { margin: 22px 0; }
+    .section { padding: 14px 0; }
+    label { display: inline-block; margin-bottom: 6px; }
+    input, select, button { font-size: 14px; }
+    input[type="text"], input[type="email"] { padding: 6px; width: 240px; }
+    button { padding: 6px 14px; margin-top: 10px; }
+
+    /* Form 2 hint icon */
+    .row { display:flex; align-items:center; gap:10px; }
+    .hint {
+      width:18px; height:18px; border:1px solid #888; border-radius:2px;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:12px; cursor:help; user-select:none;
+    }
+
+    /* Fieldset styling */
+    fieldset { width: 340px; padding: 14px; }
+    fieldset label { margin-right: 12px; }
+
+    /* DOB small boxes */
+    .dob-box { width: 300px; border: 1px solid #999; padding: 14px; }
+    .dob-labels { display:flex; gap:22px; margin-bottom: 6px; }
+    .dob-inputs { display:flex; gap:10px; }
+    .dob-inputs input { width: 50px; padding: 6px; text-align:center; }
+    .dob-inputs .year { width: 80px; }
+
+    /* Simple boxes for #6 and #7 like the PDF */
+    .simple-box { width: 360px; border: 1px solid #999; padding: 14px; }
+    .line { border-top: 1px solid #999; margin: 12px 0; }
+
+    /* PERSON PROFILE table */
+    .profile-wrap { width: 520px; border: 2px solid #777; }
+    .profile-title {
+      text-align:center; font-weight: 700; letter-spacing: 1px;
+      padding: 14px 10px; border-bottom: 2px solid #777;
+    }
+    table.profile {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.profile td {
+      border: 1px solid #777;
+      padding: 10px;
+      vertical-align: middle;
+    }
+    table.profile td:first-child { width: 130px; background: #f7f7f7; }
+    .profile-actions {
+      display:flex; justify-content: flex-end; gap: 10px;
+      padding: 12px 10px; border-top: 2px solid #777;
+    }
+    .small { color:#555; font-size: 12px; margin-left: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>HTML-FORM LAB 2</h1>
+
+
+  <hr />
+
+  <!-- 1) Name -->
+  <div class="section" id="form1">
+    <h2>1) Name</h2>
+    <form action="#" method="post">
+      <div>
+        <label for="name1">Name</label><br />
+        <input id="name1" name="name" type="text" required />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 2) Email with hint -->
+  <div class="section" id="form2">
+    <h2>2) Email</h2>
+    <form action="#" method="post">
+      <label for="email2">Email</label>
+      <div class="row">
+        <input id="email2" name="email" type="email" required />
+        <span class="hint" title="hint: sample@example.com">i</span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 3) Gender -->
+  <div class="section" id="form3">
+    <h2>3) Gender</h2>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Gender</legend>
+        <label><input type="radio" name="gender" value="Male" required /> Male</label>
+        <label><input type="radio" name="gender" value="Female" /> Female</label>
+        <label><input type="radio" name="gender" value="Other" /> Other</label>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 4) Date of Birth -->
+  <div class="section" id="form4">
+    <h2>4) Date of Birth</h2>
+    <form action="#" method="post">
+      <div class="dob-box">
+        <div style="font-weight:bold; margin-bottom:8px;">Date of Birth</div>
+
+        <div class="dob-labels">
+          <span>dd</span><span>mm</span><span>yyyy</span>
+        </div>
+
+        <div class="dob-inputs">
+          <input name="dd" type="text" inputmode="numeric" maxlength="2" required />
+          <span style="align-self:center;">/</span>
+          <input name="mm" type="text" inputmode="numeric" maxlength="2" required />
+          <span style="align-self:center;">/</span>
+          <input class="year" name="yyyy" type="text" inputmode="numeric" maxlength="4" required />
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 5) Degree -->
+  <div class="section" id="form5">
+    <h2>5) Degree</h2>
+    <form action="#" method="post">
+      <fieldset style="width: 260px;">
+        <legend>Degree</legend>
+        <label><input type="checkbox" name="degree" value="SSC" /> SSC</label>
+        <label><input type="checkbox" name="degree" value="HSC" /> HSC</label>
+        <label><input type="checkbox" name="degree" value="BSc" /> BSc</label>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 6) Blood Group -->
+  <div class="section" id="form6">
+    <h2>6) Blood Group</h2>
+    <form action="#" method="post">
+      <div class="simple-box" style="width: 260px;">
+        <label for="blood6">Blood Group</label>
+        <select id="blood6" name="blood_group" required>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+        <div class="line"></div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 7) Profile Picture (User Id + File) -->
+  <div class="section" id="form7">
+    <h2>7) Profile Picture</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <div class="simple-box">
+        <div style="font-weight:bold; margin-bottom:10px;">Profile Picture</div>
+
+        <div style="margin-bottom:10px;">
+          <label for="uid7" style="width: 70px;">User Id</label>
+          <input id="uid7" name="user_id" type="text" required />
+        </div>
+
+        <div style="margin-bottom:10px;">
+          <label for="pic7" style="width: 70px;">Picture</label>
+          <input id="pic7" name="picture" type="file" accept="image/*" required />
+        </div>
+
+        <div class="line"></div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <hr />
+
+  <!-- 8) PERSON PROFILE (table layout) -->
+  <div class="section" id="form8">
+    <h2>8) PERSON PROFILE</h2>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+      <div class="profile-wrap">
+        <div class="profile-title">PERSON PROFILE</div>
+
+        <table class="profile">
+          <tr>
+            <td>Name</td>
+            <td><input type="text" name="pp_name" required /></td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td><input type="email" name="pp_email" required /></td>
+          </tr>
+
+          <tr>
+            <td>Gender</td>
+            <td>
+              <label><input type="radio" name="pp_gender" value="Male" required /> Male</label>
+              <label><input type="radio" name="pp_gender" value="Female" /> Female</label>
+              <label><input type="radio" name="pp_gender" value="Other" /> Other</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Date of Birth</td>
+            <td>
+              <input type="text" name="pp_dd" maxlength="2" style="width:40px; text-align:center;" required />
+              /
+              <input type="text" name="pp_mm" maxlength="2" style="width:40px; text-align:center;" required />
+              /
+              <input type="text" name="pp_yyyy" maxlength="4" style="width:60px; text-align:center;" required />
+              <span class="small">(dd/mm/yyyy)</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Blood Group</td>
+            <td>
+              <select name="pp_blood" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Degree</td>
+            <td>
+              <label><input type="checkbox" name="pp_degree" value="SSC" /> SSC</label>
+              <label><input type="checkbox" name="pp_degree" value="HSC" /> HSC</label>
+              <label><input type="checkbox" name="pp_degree" value="BSc" /> BSc.</label>
+              <label><input type="checkbox" name="pp_degree" value="MSc" /> MSc.</label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Photo</td>
+            <td>
+              <input type="file" name="pp_photo" accept="image/*" required />
+            </td>
+          </tr>
+        </table>
+
+        <div class="profile-actions">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
