@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    width: 450px;
+    margin: auto;
+    background: white;
+    padding: 20px 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+fieldset {
+    border: 1px solid #999;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.inline {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.small-input {
+    width: 70px;
+    display: inline-block;
+    padding: 8px;
+    margin: 5px 3px 12px 3px;
+}
+
+.error {
+    color: red;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.success {
+    color: green;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.table-form {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-form td {
+    border: 1px solid #999;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.actions {
+    text-align: right;
+}

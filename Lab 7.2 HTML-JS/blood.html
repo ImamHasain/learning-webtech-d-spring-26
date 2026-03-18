@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Group</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Blood Group Validation</h2>
+        <form onsubmit="return validateBlood()">
+            <label for="blood">Blood Group</label>
+            <select id="blood" name="blood">
+                <option value="">Select</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+
+            <input type="submit" value="Submit">
+            <div id="bloodError"></div>
+        </form>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>

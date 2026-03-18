@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date of Birth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Date of Birth Validation</h2>
+        <form onsubmit="return validateDob()">
+            <label>Date of Birth</label><br>
+            <input type="text" id="dd" class="small-input" placeholder="dd">
+            /
+            <input type="text" id="mm" class="small-input" placeholder="mm">
+            /
+            <input type="text" id="yyyy" class="small-input" placeholder="yyyy">
+            <br>
+            <input type="submit" value="Submit">
+            <div id="dobError"></div>
+        </form>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>
