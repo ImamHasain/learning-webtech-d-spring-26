@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .game-container {
+            text-align: center;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            margin: 20px auto;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+        }
+        .cell.winner {
+            background-color: #90EE90;
+        }
+        .status {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .reset-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .reset-btn:hover {
+            background-color: #45a049;
+        }
+        .score {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tic-Tac-Toe</h1>
+        <div class="score">
+            X Wins: <span id="x-score">0</span> | O Wins: <span id="o-score">0</span>
+        </div>
+        <div class="status" id="status">Player X's turn</div>
+        <div class="board" id="board">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        <button class="reset-btn" id="reset">Reset Game</button>
+    </div>
+
+    <script>
+        const board = document.getElementById('board');
+        const status = document.getElementById('status');
+        const resetBtn = document.getElementById('reset');
+        const xScoreEl = document.getElementById('x-score');
+        const oScoreEl = document.getElementById('o-score');
+        const cells = document.querySelectorAll('.cell');
+
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        let xScore = 0;
+        let oScore = 0;
+
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function handleCellClick(event) {
+            const cell = event.target;
+            const index = parseInt(cell.getAttribute('data-index'));
+
+            if (gameBoard[index] !== '' || !gameActive) {
+                return;
+            }
+
+            gameBoard[index] = currentPlayer;
+            cell.textContent = currentPlayer;
+            cell.style.animation = 'pop 0.3s';
+
+            if (checkWin()) {
+                status.textContent = `Player ${currentPlayer} wins!`;
+                highlightWinner();
+                if (currentPlayer === 'X') {
+                    xScore++;
+                    xScoreEl.textContent = xScore;
+                } else {
+                    oScore++;
+                    oScoreEl.textContent = oScore;
+                }
+                gameActive = false;
+            } else if (checkDraw()) {
+                status.textContent = "It's a draw!";
+                gameActive = false;
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                status.textContent = `Player ${currentPlayer}'s turn`;
+            }
+        }
+
+        function checkWin() {
+            for (let condition of winningConditions) {
+                const [a, b, c] = condition;
+                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    return condition;
+                }
+            }
+            return false;
+        }
+
+        function highlightWinner() {
+            const winnerCells = checkWin();
+            if (winnerCells) {
+                winnerCells.forEach(index => {
+                    cells[index].classList.add('winner');
+                });
+            }
+        }
+
+        function checkDraw() {
+            return gameBoard.every(cell => cell !== '');
+        }
+
+        function resetGame() {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            currentPlayer = 'X';
+            status.textContent = `Player ${currentPlayer}'s turn`;
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('winner');
+                cell.style.animation = '';
+            });
+        }
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', handleCellClick);
+        });
+
+        resetBtn.addEventListener('click', resetGame);
+
+        // Add pop animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pop {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
