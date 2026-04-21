@@ -2,7 +2,6 @@
 
 This repository contains my Web Technologies course work.
 
-<<<<<<< HEAD
 I will be uploading all labs, assignments, and practice tasks here...
 =======
 I will be uploading all labs, assignments, and practice tasks here.
