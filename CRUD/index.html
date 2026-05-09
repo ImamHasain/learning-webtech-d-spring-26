@@ -5,22 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management Portal</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>User Management Portal</h1>
-    <form id="userForm">
-        <input type="hidden" id="userId" name="id">
-        <input type="text" id="name" name="name" placeholder="Name" required>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <button type="submit">Add/Update User</button>
-    </form>
-    <h2>User List</h2>
-    <table id="userTable">
-        <thead>
-            <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="container">
+        <header>
+            <h1><span class="icon">👤</span> User Management Portal</h1>
+        </header>
+        <section class="form-section">
+            <form id="userForm" autocomplete="off">
+                <input type="hidden" id="userId" name="id">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">Add User</button>
+                    <button type="reset" id="resetBtn">Clear</button>
+                </div>
+            </form>
+        </section>
+        <section class="table-section">
+            <h2>User List</h2>
+            <table id="userTable">
+                <thead>
+                    <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
