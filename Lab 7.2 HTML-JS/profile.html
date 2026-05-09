@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>PERSON PROFILE</h2>
+
+        <form onsubmit="return validateProfile()">
+            <table class="table-form">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="pname" name="pname"></td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" id="pemail" name="pemail"></td>
+                </tr>
+
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <label class="inline"><input type="radio" name="pgender" value="Male"> Male</label>
+                        <label class="inline"><input type="radio" name="pgender" value="Female"> Female</label>
+                        <label class="inline"><input type="radio" name="pgender" value="Other"> Other</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>
+                        <input type="text" id="pdd" class="small-input" placeholder="dd"> /
+                        <input type="text" id="pmm" class="small-input" placeholder="mm"> /
+                        <input type="text" id="pyyyy" class="small-input" placeholder="yyyy">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Blood Group</td>
+                    <td>
+                        <select id="pblood" name="pblood">
+                            <option value="">Select</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Degree</td>
+                    <td>
+                        <label class="inline"><input type="checkbox" name="pdegree" value="SSC"> SSC</label>
+                        <label class="inline"><input type="checkbox" name="pdegree" value="HSC"> HSC</label>
+                        <label class="inline"><input type="checkbox" name="pdegree" value="BSc"> BSc</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Photo</td>
+                    <td><input type="file" id="pphoto" name="pphoto"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="actions">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </td>
+                </tr>
+            </table>
+
+            <div id="profileError"></div>
+        </form>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>

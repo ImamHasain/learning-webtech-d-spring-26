@@ -1,0 +1,6 @@
+body { font-family: Arial, sans-serif; max-width:800px; margin:20px auto; padding:0 16px; }
+label { display:block; margin:8px 0; }
+input[type=text], input[type=password], input[type=file] { display:block; margin-top:4px; }
+.errors { background:#ffe6e6; border:1px solid #ffb3b3; padding:8px; }
+.success { background:#e6ffe6; border:1px solid #b3ffb3; padding:8px; }
+fieldset { padding:12px; }

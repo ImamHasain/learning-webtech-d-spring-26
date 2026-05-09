@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Email Validation</h2>
+        <form onsubmit="return validateEmail()">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <input type="submit" value="Submit">
+            <div id="emailError"></div>
+        </form>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>
